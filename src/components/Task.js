@@ -27,9 +27,9 @@ const Task = (props) => {
     
   };
 
-  const deleteSelectedTask = () => {
-    console.log('Deleting task with id=', props.id);
-    props.onDelete(props.id);
+  const deleteSelectedTask = (id) => {
+    //console.log('Deleting task with id=', props.id);
+    props.deleteOneTask(id);
     
   };
   
@@ -50,7 +50,7 @@ Task.propTypes = {
   title: PropTypes.string.isRequired,
   isComplete: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  deleteOneTask: PropTypes.func.isRequired,
 };
 
 export default Task;

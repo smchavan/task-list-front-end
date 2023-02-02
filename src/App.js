@@ -2,7 +2,7 @@ import React, { useEffect, useState }from 'react';
 import TaskList from './components/TaskList.js';
 import './App.css';
 import axios from 'axios';
-const kBaseUrl = "https://task-list-api-c17.herokuapp.com/";
+const kBaseUrl = 'https://task-list-api-c17.herokuapp.com/';
 
 const transformResponse = (task) => {
   const {
@@ -82,17 +82,13 @@ const markIncompletedWithId = (id) => {
 
     const deleteOneTask = (id) => {
       const allRemainingTasks = [];
-      console.log('Task to be deleted');
-      for (let task of taskData){
-        if(taskData.id ===id){
-          console.log(task.title);
-        }
-      }
+      //console.log('Task to be deleted');
       for (const task of taskData){
         if (task.id !== id){
           allRemainingTasks.push(task);
         }
       }
+     // setTaskData(allRemainingTasks);
     };
 
       return (
@@ -106,7 +102,7 @@ const markIncompletedWithId = (id) => {
                 <TaskList 
                 tasks={taskData}
                 onUpdateTask={updateTaskData}
-                onDeleteTask={deleteOneTask}
+                deleteOneTask={deleteOneTask}
               />
               }
             </div>
