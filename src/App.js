@@ -6,7 +6,7 @@ const kBaseUrl = "https://task-list-api-c17.herokuapp.com/";
 
 const transformResponse = (task) => {
   const {
-    task_id: id,
+    id: id,
     title,
     is_complete:isComplete
   } = task;
@@ -65,30 +65,36 @@ const markIncompletedWithId = (id) => {
         setTaskData(tasks);
       });
       };
-      useEffect(() =>{
-        fetchTasks();
-      }, []);
+  useEffect(() =>{
+    fetchTasks();
+    }, []);
       
-    
-  
     const updateTaskData = updatedTask => {
-    const tasks = taskData.map(task => {
-      if (task.id === updatedTask.id) {
-        return updatedTask;
-      } else {
-        return task;
-      }
-    });
+      const tasks = taskData.map(task => {
+        if (task.id === updatedTask.id) {
+          return updatedTask;
+        } else {
+          return task;
+        }
+      });
     setTaskData(tasks);
   };
+
     const deleteOneTask = (id) => {
       const allRemainingTasks = [];
+      console.log('Task to be deleted');
+      for (let task of taskData){
+        if(taskData.id ===id){
+          console.log(task.title);
+        }
+      }
       for (const task of taskData){
-        if (task.id === id){
+        if (task.id !== id){
           allRemainingTasks.push(task);
         }
       }
     };
+
       return (
         <div className="App">
           <header className="App-header">
@@ -100,6 +106,7 @@ const markIncompletedWithId = (id) => {
                 <TaskList 
                 tasks={taskData}
                 onUpdateTask={updateTaskData}
+                onDeleteTask={deleteOneTask}
               />
               }
             </div>

@@ -15,7 +15,6 @@ import './TaskList.css';
 //           </Student>
 //           </li>
 
-
 const TaskList = (props) => {
   const getTaskList = props.tasks.map((task) => {
     return (
@@ -25,7 +24,7 @@ const TaskList = (props) => {
           title={task.title}
           isComplete={task.isComplete}
           onUpdate = {props.onUpdateTask}
-          //onDelete = {props.onDeleteOneTask}
+          onDelete = {props.onDeleteTask}
         />
       </li>
     );
@@ -41,7 +40,7 @@ TaskList.propTypes = {
       isComplete: PropTypes.bool.isRequired,
     }) ),
   onUpdateTask: PropTypes.func.isRequired,
-  //onDeleteOneTask: PropTypes.func.isRequired
+  onDeleteTask: PropTypes.func.isRequired,
 };
 
 export default TaskList;

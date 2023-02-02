@@ -24,12 +24,14 @@ const Task = (props) => {
       isComplete: !props.isComplete,
     };
     props.onUpdate(updatedTask);
-    //props.onDelete(props.id)
-    //props.
+    
   };
 
-  // we can change the class 
-  //it looks good see if runs
+  const deleteSelectedTask = () => {
+    console.log('Deleting task with id=', props.id);
+    props.onDelete(props.id);
+    
+  };
   
   const buttonClass = props.isComplete ? '--completed': '';
 
@@ -37,7 +39,7 @@ const Task = (props) => {
     <li className="tasks__item">
       <button className={`tasks__item__toggle${buttonClass}`} onClick={OnClickOnTask}>{props.title}</button>
       <button className="tasks__item__remove button"
-        //onClick={() => props.onDelete(props.id)}
+        onClick={deleteSelectedTask(props.id)}
       >x</button>
     </li>
   );
@@ -48,7 +50,7 @@ Task.propTypes = {
   title: PropTypes.string.isRequired,
   isComplete: PropTypes.bool.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  //onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Task;
