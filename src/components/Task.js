@@ -24,6 +24,8 @@ const Task = (props) => {
       isComplete: !props.isComplete,
     };
     props.onUpdate(updatedTask);
+    //props.onDelete(props.id)
+    //props.
   };
 
   // we can change the class 
@@ -34,8 +36,9 @@ const Task = (props) => {
   return (
     <li className="tasks__item">
       <button className={`tasks__item__toggle${buttonClass}`} onClick={OnClickOnTask}>{props.title}</button>
-      <button className="tasks_
-      _item__remove button">x</button>
+      <button className="tasks__item__remove button"
+        //onClick={() => props.onDelete(props.id)}
+      >x</button>
     </li>
   );
 };
@@ -44,7 +47,8 @@ Task.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   isComplete: PropTypes.bool.isRequired,
-  onUpdate: PropTypes.func.isRequired
+  onUpdate: PropTypes.func.isRequired,
+  //onDelete: PropTypes.func.isRequired,
 };
 
 export default Task;
